@@ -49,14 +49,14 @@ func (t *Tree) GetRootNode() *Node {
 }
 
 type Node struct {
-	name        string       `json:"name"`
-	leaf        bool         `json:"leaf"`
-	value       interface{}  `json:"value"`
-	nodeType    reflect.Type `json:"node_type"`
-	children    []*Node      `json:"children"`
-	parent      *Node        `json:"parent"`
-	hasChildren bool         `json:"has_children"`
-	isRoot      bool         `json:"is_root"`
+	name        string
+	leaf        bool
+	value       interface{}
+	nodeType    reflect.Type
+	children    []*Node
+	parent      *Node
+	hasChildren bool
+	isRoot      bool
 }
 
 func (t *Tree) Load(raw []byte) *Tree {

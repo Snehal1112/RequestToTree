@@ -73,6 +73,7 @@ func TestCreate_EmptyNode(t *testing.T) {
 		t.Errorf("node is not created properly.")
 	}
 }
+
 func TestCreate_RootNode(t *testing.T) {
 	node := NewEmptyNode(true)
 	if node.name != RootName && !node.isRootNode() {

@@ -1,0 +1,22 @@
+go_import_path: github.com/Snehal1112/RequestToTree
+
+language: go
+go:
+  - 1.9.x
+  - tip
+
+os:
+  - linux
+  - osx
+
+matrix:
+  allow_failures:
+    - go: tip
+  fast_finish: true
+
+script:
+  - go install ./...
+  - diff -u <(echo -n) <(gofmt -d .)
+  - go test -v ./...
+
+sudo: false

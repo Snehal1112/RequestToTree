@@ -1,4 +1,4 @@
-package treema
+package requesttotree
 
 import (
 	"bytes"

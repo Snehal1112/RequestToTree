@@ -1,4 +1,4 @@
-package treema
+package requesttotree
 
 import (
 	"encoding/json"
@@ -6,10 +6,13 @@ import (
 	"reflect"
 )
 
+// NewTree function return new empty tree.
 func NewTree() *Tree {
 	return &Tree{}
 }
 
+// NewEmptyNode function return new empty node
+// it can be either root node or normal node.
 func NewEmptyNode(root bool) *Node {
 	if root {
 		return &Node{
@@ -27,11 +30,15 @@ type Tree struct {
 	source string
 }
 
+// GetNodeByName function find the node based on given
+// node name.
 func (t *Tree) GetNodeByName(name string) interface{} {
 	result := t.getNodeByName(name, t.GetRootNode())
 	return result
 }
 
+// getNodeByName function find the node based on given
+// node name.
 func (t *Tree) getNodeByName(name string, node *Node) interface{} {
 	if node.name == name {
 		return node
@@ -44,6 +51,8 @@ func (t *Tree) getNodeByName(name string, node *Node) interface{} {
 	return nil
 }
 
+// GetRootNode function return root node
+// of tree.
 func (t *Tree) GetRootNode() *Node {
 	return t.node
 }
@@ -59,6 +68,7 @@ type Node struct {
 	isRoot      bool
 }
 
+//Load function load the data in tree format.
 func (t *Tree) Load(raw []byte) *Tree {
 	mapData := make(map[string]interface{})
 	if err := json.Unmarshal(raw, &mapData); err != nil {
@@ -78,14 +88,20 @@ func (t *Tree) Load(raw []byte) *Tree {
 	return t
 }
 
+// isRootNode function return true if
+// selected node is root node.
 func (n *Node) isRootNode() bool {
 	return n.isRoot
 }
 
+// hasChild function return true if selected
+// node has child nodes or not
 func (n *Node) hasChild() bool {
 	return n.hasChildren
 }
 
+// GetParentNode function return parent node of selected
+// node.
 func (n *Node) GetParentNode() *Node {
 	return n.parent
 }
